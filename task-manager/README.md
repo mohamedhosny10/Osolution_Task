@@ -1,6 +1,6 @@
 # Task Manager (super simple)
 
-Just a tiny task app, I am still learning so it is not perfect.
+A lightweight task tracker with add, edit, delete, and completion features
 
 ## Tools I used
 - Vue 3
@@ -17,8 +17,9 @@ Just a tiny task app, I am still learning so it is not perfect.
 - `npm run build`
 - it makes a dist folder
 
-## Screenshots
-- (I will put images later, forgot now)
+## Video
+- Link to the video :
+https://drive.google.com/file/d/1Mzj4Y4C0w81Gj35mSI4rEJ6nt1Ptbagw/view?usp=sharing
 
 ## Features
 - add task
