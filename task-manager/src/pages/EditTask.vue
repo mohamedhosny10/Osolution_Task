@@ -15,7 +15,7 @@
     priority: '',
     dueDate: '',
   })
-  const _temp = ref(null)
+
 
   onMounted(async () => {
     categoriesStore.fetchCategories()
@@ -67,43 +67,43 @@
   </script>
 
 <template>
-  <div style="padding: 20px;">
-    <h1>Edit Task</h1>
+  <div style="padding: 24px; max-width: 640px; margin: 0 auto; background: #fdfdfd; border: 1px solid #e5e5e5; border-radius: 8px;">
+    <h1 style="margin-bottom: 16px;">Edit Task</h1>
     <div v-if="loadVal">loading...</div>
-    <form v-else @submit.prevent="doSave">
-      <div style="margin-top: 20px;">
+    <form v-else @submit.prevent="doSave" style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
         <label>Title</label>
-        <input v-model="form_data.title" type="text" />
+        <input v-model="form_data.title" type="text" style="padding: 10px; border: 1px solid #d0d0d0; border-radius: 6px;" />
       </div>
-      <div style="margin-top: 20px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
         <label>Description</label>
-        <input v-model="form_data.description" type="text" />
+        <input v-model="form_data.description" type="text" style="padding: 10px; border: 1px solid #d0d0d0; border-radius: 6px;" />
       </div>
-      <div style="margin-top: 20px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
         <label>Category</label>
-        <select v-model="form_data.category">
+        <select v-model="form_data.category" style="padding: 10px; border: 1px solid #d0d0d0; border-radius: 6px;">
           <option value="">Select Category</option>
           <option v-for="category in categoriesStore.categories" :key="category.id" :value="category.id">
             {{ category.name }}
           </option>
         </select>
       </div>
-      <div style="margin-top: 20px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
         <label>Priority</label>
-        <select v-model="form_data.priority">
+        <select v-model="form_data.priority" style="padding: 10px; border: 1px solid #d0d0d0; border-radius: 6px;">
           <option value="">Select Priority</option>
           <option value="low">Low</option>
           <option value="medium">Medium</option>
           <option value="high">High</option>
         </select>
       </div>
-      <div style="margin-top: 20px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
         <label>Due Date</label>
-        <input v-model="form_data.dueDate" type="date" />
+        <input v-model="form_data.dueDate" type="date" style="padding: 10px; border: 1px solid #d0d0d0; border-radius: 6px;" />
       </div>
-      <div style="margin-top: 20px;">
-        <button type="submit">Save</button>
-        <button type="button" @click="makeDelete" style="margin-left: 10px;">Delete</button>
+      <div style="display: flex; gap: 10px; margin-top: 8px;">
+        <button type="submit" style="padding: 10px 16px; background: #10b981; color: white; border: none; border-radius: 6px; cursor: pointer;">Save</button>
+        <button type="button" @click="makeDelete" style="padding: 10px 16px; background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer;">Delete</button>
       </div>
     </form>
   </div>

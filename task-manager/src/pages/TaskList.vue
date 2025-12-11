@@ -7,7 +7,7 @@ import { updateTask } from '../services/api'
 const taskStore = useTaskStore()
 const categoriesStore = useCategoriesStore()
 const theCat = ref('')
-const _temp = ref(null)
+
 
 onMounted(() => {
   taskStore.fetchTasks()
@@ -29,23 +29,27 @@ async function changeIt(task: any) {
 </script>
 
 <template>
-  <div style="padding: 20px;">
-    <h1>Task List</h1>
-    <router-link to="/add">
-      <button>Add Task</button>
-    </router-link>
-    <div style="margin-top: 20px;">
-      <select v-model="theCat" style="margin-bottom: 20px;">
+  <div style="padding: 24px; max-width: 900px; margin: 0 auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h1 style="margin: 0;">Task List</h1>
+      <router-link to="/add">
+        <button style="padding: 10px 16px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer;">Add Task</button>
+      </router-link>
+    </div>
+    <div style="padding: 16px; border: 1px solid #e5e5e5; border-radius: 8px; background: #fdfdfd;">
+      <select v-model="theCat" style="margin-bottom: 16px; padding: 10px; border: 1px solid #d0d0d0; border-radius: 6px; width: 220px;">
         <option value="">All Categories</option>
         <option v-for="category in categoriesStore.categories" :key="category.id" :value="category.id">
           {{ category.name }}
         </option>
       </select>
-      <div v-if="taskStore.loading">loading...</div>
-      <div v-for="task in getTasks()" :key="task.id" style="margin-top: 10px; border: 1px solid #ddd; padding: 10px; background: #f9f9f9;">
+      <div v-if="taskStore.loading" style="margin-top: 10px;">loading...</div>
+      <div v-for="task in getTasks()" :key="task.id" style="margin-top: 12px; border: 1px solid #ddd; padding: 12px; background: #f9f9f9; border-radius: 6px; display: flex; gap: 12px; align-items: center;">
         <input type="checkbox" :checked="task.completed" @change="changeIt(task)" />
-        <div>{{ task.title }}</div>
-        <div>{{ task.category_id }}</div>
+        <div style="flex: 1;">
+          <div style="font-weight: 600;">{{ task.title }}</div>
+          <div style="color: #555;">Category: {{ task.category_id }}</div>
+        </div>
       </div>
     </div>
   </div>
